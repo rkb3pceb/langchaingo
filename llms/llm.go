@@ -78,32 +78,7 @@ type ContentChoice struct {
 	// Content is the generated text.
 	Content string `json:"content"`
 	// StopReason describes why the model stopped generating.
+	// Common values: "stop", "length", "content_filter", "tool_calls".
 	StopReason string `json:"stop_reason"`
 	// GenerationInfo contains additional metadata about the generation.
 	GenerationInfo map[string]any `json:"generation_info,omitempty"`
-	// FuncCall holds a function call requested by the model, if any.
-	FuncCall *FunctionCall `json:"func_call,omitempty"`
-	// ToolCalls holds tool calls requested by the model, if any.
-	ToolCalls []ToolCall `json:"tool_calls,omitempty"`
-}
-
-// FunctionCall represents a function call requested by the model.
-type FunctionCall struct {
-	Name      string `json:"name"`
-	Arguments string `json:"arguments"`
-}
-
-// ToolCall represents a tool invocation requested by the model.
-type ToolCall struct {
-	ID       string       `json:"id"`
-	Type     string       `json:"type"`
-	FuncCall FunctionCall `json:"function"`
-}
-
-// Model is the interface that all LLM implementations must satisfy.
-type Model interface {
-	// GenerateContent sends messages to the model and returns the generated response.
-	GenerateContent(ctx context.Context, messages []MessageContent, options ...CallOption) (*ContentResponse, error)
-	// Call is a convenience method for single-turn text completion.
-	Call(ctx context.Context, prompt string, options ...CallOption) (string, error)
-}
