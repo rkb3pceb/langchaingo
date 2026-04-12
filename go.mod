@@ -14,13 +14,12 @@ require (
 	github.com/pkoukk/tiktoken-go v0.1.6
 	github.com/stretchr/testify v1.8.4
 	github.com/tmc/langchaingo v0.1.10
-	golang.org/x/net v0.17.0
+	golang.org/x/net v0.19.0
 )
 
 require (
 	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dlclark/regexp2 v1.10.0 // indirect
 	github.com/go-sourcemap/sourcemap v2.1.3+incompatible // indirect
 	github.com/goph/emperror v0.17.2 // indirect
 	github.com/pkg/errors v0.9.0 // indirect
