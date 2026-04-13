@@ -54,6 +54,7 @@ const (
 	// ChatMessageTypeSystem represents a system-level instruction message.
 	ChatMessageTypeSystem ChatMessageType = "system"
 	// ChatMessageTypeGeneric represents a message with an arbitrary role.
+	// Note: prefer using a specific type when possible; generic is a fallback.
 	ChatMessageTypeGeneric ChatMessageType = "generic"
 	// ChatMessageTypeFunction represents a function call result message.
 	ChatMessageTypeFunction ChatMessageType = "function"
@@ -80,5 +81,4 @@ type ContentChoice struct {
 	// StopReason describes why the model stopped generating.
 	// Common values: "stop", "length", "content_filter", "tool_calls".
 	StopReason string `json:"stop_reason"`
-	// GenerationInfo contains additional metadata about the generation.
-	GenerationInfo map[string]any `json:"generation_info,omitempty"`
+	// GenerationInfo contains additional metadata about the generation
