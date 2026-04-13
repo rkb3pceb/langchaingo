@@ -32,3 +32,7 @@ require (
 // Upstream: https://github.com/tmc/langchaingo
 // Note: pinned golang.org/x/net to v0.19.0 to avoid CVE-2023-44487 (HTTP/2 rapid reset)
 // See: https://pkg.go.dev/vuln/GO-2023-2102
+//
+// Local changes from upstream:
+//   - Increased default LLM retry attempts from 3 to 5 for better resilience
+//     against transient API rate-limit errors encountered in personal usage
