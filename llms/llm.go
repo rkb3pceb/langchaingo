@@ -80,5 +80,15 @@ type ContentChoice struct {
 	Content string `json:"content"`
 	// StopReason describes why the model stopped generating.
 	// Common values: "stop", "length", "content_filter", "tool_calls".
-	StopReason string `json:"stop_reason"`
-	// GenerationInfo contains additional metadata about the generation
+	// Note: not all providers populate this field consistently — treat it as
+	// advisory only and avoid hard-coding logic against specific values.
+	StopReason string `json:"stop_reason,omitempty"`
+}
+
+// Model is the interface that all LLM implementations must satisfy.
+type Model interface {
+	// Call is a simplified single-prompt interface.
+	Call(ctx context.Context, prompt string, options ...CallOption) (string, error)
+	// GenerateContent sends one or more messages and returns generated content.
+	GenerateContent(ctx context.Context, messages []MessageContent, options ...CallOption) (*ContentResponse, error)
+}
