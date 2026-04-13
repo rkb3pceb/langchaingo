@@ -27,3 +27,6 @@ require (
 	github.com/yargevad/filepathx v1.0.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+// Personal fork of tmc/langchaingo - tracking upstream v0.1.10
+// Upstream: https://github.com/tmc/langchaingo
