@@ -30,3 +30,5 @@ require (
 
 // Personal fork of tmc/langchaingo - tracking upstream v0.1.10
 // Upstream: https://github.com/tmc/langchaingo
+// Note: pinned golang.org/x/net to v0.19.0 to avoid CVE-2023-44487 (HTTP/2 rapid reset)
+// See: https://pkg.go.dev/vuln/GO-2023-2102
