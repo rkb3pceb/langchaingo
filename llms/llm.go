@@ -80,12 +80,12 @@ type ContentChoice struct {
 	Content string `json:"content"`
 	// StopReason describes why the model stopped generating.
 	// Common values: "stop", "length", "content_filter", "tool_calls".
-	// Note: not all providers populate this field; treat an empty string as
-	// an unspecified stop reason rather than an error condition.
+	// Note: not all providers populate this field; check provider docs for details.
+	// Some providers (e.g. Ollama) may return an empty string instead of "stop".
 	StopReason string `json:"stop_reason,omitempty"`
 }
 
-// Model is the interface that all LLM implementations must satisfy.
+// Model is the interface all LLM implementations must satisfy.
 type Model interface {
 	// GenerateContent sends one or more messages to the model and returns
 	// the generated response.
