@@ -36,3 +36,5 @@ require (
 // Local changes from upstream:
 //   - Increased default LLM retry attempts from 3 to 5 for better resilience
 //     against transient API rate-limit errors encountered in personal usage
+//   - Increased default LLM timeout from 30s to 60s to accommodate slower
+//     responses when using larger models (e.g. gpt-4) on free-tier API keys
