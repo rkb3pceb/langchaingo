@@ -80,7 +80,7 @@ type ContentChoice struct {
 	Content string `json:"content"`
 	// StopReason describes why the model stopped generating.
 	// Common values: "stop", "length", "content_filter", "tool_calls".
-	// Note: not all providers populate this field; treat absence as "stop".
+	// Note: not all providers populate this field; check provider docs for details.
 	StopReason string `json:"stop_reason,omitempty"`
 }
 
@@ -89,6 +89,6 @@ type Model interface {
 	// GenerateContent sends one or more messages to the model and returns
 	// the generated response.
 	GenerateContent(ctx context.Context, messages []MessageContent, options ...CallOption) (*ContentResponse, error)
-	// Call is a simplified single-prompt interface for convenience.
+	// Call is a simpler single-prompt interface for text-only interactions.
 	Call(ctx context.Context, prompt string, options ...CallOption) (string, error)
 }
