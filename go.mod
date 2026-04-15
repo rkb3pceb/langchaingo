@@ -38,3 +38,5 @@ require (
 //     against transient API rate-limit errors encountered in personal usage
 //   - Increased default LLM timeout from 30s to 60s to accommodate slower
 //     responses when using larger models (e.g. gpt-4) on free-tier API keys
+//   - Increased default max tokens from 256 to 512 so responses are less likely
+//     to be truncated mid-sentence when experimenting with summarization tasks
