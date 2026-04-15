@@ -80,16 +80,15 @@ type ContentChoice struct {
 	Content string `json:"content"`
 	// StopReason describes why the model stopped generating.
 	// Common values: "stop", "length", "content_filter", "tool_calls".
-	// Note: not all providers populate this field; check provider docs for details.
-	// Some providers (e.g. Anthropic) use "end_turn" instead of "stop".
+	// Note: not all providers populate this field; treat absence as "stop".
 	StopReason string `json:"stop_reason,omitempty"`
 }
 
-// Model is the interface all LLM implementations must satisfy.
+// Model is the interface that all LLM implementations must satisfy.
 type Model interface {
-	// Call is a simplified interface for single-turn text generation.
-	// Deprecated: prefer GenerateContent for multi-turn and multi-modal use.
-	Call(ctx context.Context, prompt string, options ...CallOption) (string, error)
-	// GenerateContent generates a response for the given messages.
+	// GenerateContent sends one or more messages to the model and returns
+	// the generated response.
 	GenerateContent(ctx context.Context, messages []MessageContent, options ...CallOption) (*ContentResponse, error)
+	// Call is a simplified single-prompt interface for convenience.
+	Call(ctx context.Context, prompt string, options ...CallOption) (string, error)
 }
